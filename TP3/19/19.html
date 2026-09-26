@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 19 - Formulario Multi-step</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contenedor-formulario">
+        <h1>Registro de Usuario</h1>
+        
+        <!-- RADIO BUTTONS: Controlan qué paso se muestra -->
+        <input type="radio" name="pasos" id="radio-paso1" class="control-paso" checked>
+        <input type="radio" name="pasos" id="radio-paso2" class="control-paso">
+
+        <form action="#" method="POST" class="formulario-registro">
+            
+            <!-- PASO 1 -->
+            <div class="seccion-paso" id="paso-1">
+                <h2>Paso 1: Datos Básicos</h2>
+                
+                <div class="grupo-input">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="email">Correo electrónico:</label>
+                    <!-- El type="email" asegura que la validación nativa exija un formato correcto -->
+                    <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                </div>
+                
+                <!-- Este label funciona como botón para avanzar al Paso 2 -->
+                <label for="radio-paso2" class="btn btn-siguiente">Siguiente Paso &rarr;</label>
+            </div>
+
+            <!-- PASO 2-->
+            <div class="seccion-paso" id="paso-2">
+                <h2>Paso 2: Seguridad</h2>
+                
+                <div class="grupo-input">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required minlength="8" placeholder="Mínimo 8 caracteres">
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9]+" placeholder="Solo letras y números">
+                </div>
+                
+                <div class="botones-paso">
+                    <!-- Este label funciona como botón para retroceder al Paso 1 -->
+                    <label for="radio-paso1" class="btn btn-anterior">&larr; Volver</label>
+                    <!-- Botón real de envío del formulario -->
+                    <button type="submit" class="btn btn-enviar">Registrarse</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>

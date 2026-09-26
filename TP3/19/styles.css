@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.contenedor-formulario {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Lógica Multi-step (Truco de Radio Buttons)*/
+/* Ocultamos los radio buttons del flujo visual */
+.control-paso {
+    display: none;
+}
+
+/* Ocultamos todas las secciones por defecto */
+.seccion-paso {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animación suave para la transición entre pasos */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Si radio 1 está marcado, muestra el paso 1. Si radio 2 está marcado, muestra paso 2 */
+#radio-paso1:checked ~ .formulario-registro #paso-1 {
+    display: block;
+}
+
+#radio-paso2:checked ~ .formulario-registro #paso-2 {
+    display: block;
+}
+
+/* Estilos de Formulario y Validación Visual*/
+.grupo-input {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc; /* Borde neutro por defecto */
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Indicador visual para campos requeridos */
+input:required {
+    border-left: 4px solid #f39c12; /* Una marca naranja para indicar que es obligatorio */
+}
+
+/* Feedback visual de error usando :invalid */
+/* Se aplica solo cuando el campo no está vacío (placeholder-shown evita que esté rojo desde el inicio) */
+input:not(:placeholder-shown):invalid {
+    border-color: #e74c3c; /* Borde rojo */
+    background-color: #fadbd8;
+}
+
+/* Feedback visual de éxito usando :valid */
+input:not(:placeholder-shown):valid {
+    border-color: #2ecc71; /* Borde verde */
+    background-color: #eaeded;
+}
+
+/* Botones*/
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn-siguiente, .btn-enviar {
+    background-color: #3498db;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-siguiente:hover, .btn-enviar:hover {
+    background-color: #2980b9;
+}
+
+.botones-paso {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-anterior {
+    background-color: #95a5a6;
+    color: white;
+    flex: 1;
+}
+
+.btn-anterior:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-enviar {
+    flex: 2;
+}
