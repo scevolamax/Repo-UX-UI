@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f1f1f1;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #f1c40f;
+    margin-bottom: 30px;
+}
+
+/* Contenedor Grid Mosaico*/
+.galeria-mosaico {
+    display: grid;
+    
+    /* Crea columnas flexibles que se adaptan al ancho de la pantalla */
+    /* Cada columna medirá como mínimo 150px y como máximo 1fr (una fracción del espacio restante) */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    
+    /* Obliga al grid a reordenar los elementos pequeños para tapar huecos vacíos dejados por elementos grandes[cite: 1] */
+    grid-auto-flow: dense;
+    
+    /* Define una altura base para las filas para que los spans funcionen de manera proporcional */
+    grid-auto-rows: 150px;
+    
+    gap: 15px; /* Espaciado armónico entre imágenes */
+}
+
+/* Estilos de los Ítems*/
+.item {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Ajusta las imágenes para que llenen su contenedor completamente sin deformarse */
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.item:hover img {
+    transform: scale(1.05); /* Pequeño efecto al pasar el mouse */
+}
+
+/* Modificadores de Tamaño (Spans)*/
+
+/* Elemento que ocupa 2 columnas y 2 filas[cite: 1] */
+.item-destacado {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Variaciones adicionales para enriquecer el mosaico */
+.item-ancho {
+    grid-column: span 2;
+    /* Al no definir grid-row, ocupa 1 fila por defecto */
+}
+
+.item-alto {
+    /* Al no definir grid-column, ocupa 1 columna por defecto */
+    grid-row: span 2;
+}

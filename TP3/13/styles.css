@@ -1,0 +1,78 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Estilos de Inputs y Textarea */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: inherit;
+    
+    /* Bordes redondeados */
+    border-radius: 6px; 
+    
+    /* Transición suave para el cambio de estado */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+    
+    /* Elimina el contorno azul por defecto del navegador */
+    outline: none; 
+}
+
+/* Estados :focus diferenciados (cuando el usuario hace clic dentro) */
+input:focus, textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+}
+
+/* Estilos del Botón */
+.btn-enviar {
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    
+    /* Transición suave para el color y el tamaño */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Estado :hover (cuando el mouse pasa por encima) */
+.btn-enviar:hover {
+    background-color: #2980b9;
+}
+
+/* Estado :active (en el momento exacto en que se hace clic) */
+.btn-enviar:active {
+    background-color: #1c5980;
+    transform: scale(0.97); /* Efecto visual de que el botón se hunde */
+}

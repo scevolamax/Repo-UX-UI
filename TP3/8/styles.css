@@ -1,0 +1,61 @@
+/* se aplica Flexbox al contenedor principal (.navbar) para lograr la distribución requerida
+
+/* Reinicio básico para eliminar márgenes por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos de la Barra de Navegación (Flexbox)*/
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    
+    /* REQUISITOS FLEXBOX */
+    display: flex;               /* Activa Flexbox en el contenedor */
+    justify-content: space-between; /* Empuja el logo a la izquierda y los links a la derecha */
+    align-items: center;         /* Centra verticalmente los elementos dentro de la barra */
+}
+
+/* ### Estilos del logo ###*/
+
+/* si fuera solo texto */
+/* .logo {  
+    font-size: 24px;
+    font-weight: bold;
+} */
+
+/* Estilos para la imagen del logo */
+.logo img {
+    height: 50px; /* Ajusta el tamaño del logo en la barra */
+    width: auto; /* Mantiene las proporciones og de la img */
+    display: block; /* Evita pequeños márgenes invisibles que a veces se generan debajo de las imágenes */
+    border-radius: 5px; /* Opcional: redondear un poco los bordes de la imagen */
+}
+
+/* Estilos para el contenedor de los links (también usa Flexbox para alinear los items) */
+.nav-links {
+    list-style: none; /* Quita los puntos de la lista */
+    display: flex;    /* Alinea los links horizontalmente */
+    gap: 20px;        /* Espacio entre cada link */
+}
+
+/* Estilos de los links */
+.nav-links a {
+    color: white;
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+/* ### opcional: colorcito al pasar el mouse ### */
+.nav-links a:hover {
+    color: red;
+}

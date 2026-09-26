@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 17 - Menú Hamburguesa CSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">MiSitio</div>
+
+        <!-- Checkbox oculto que controla el estado (abierto/cerrado) -->
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+
+        <!-- Label correctamente asociado al ID del checkbox -->
+        <label for="menu-toggle" class="menu-icon">
+            <!-- Tres líneas para dibujar el ícono de hamburguesa -->
+            <span class="navicon"></span>
+        </label>
+
+        <!-- Contenedor del menú de navegación -->
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
