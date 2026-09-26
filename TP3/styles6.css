@@ -1,0 +1,38 @@
+body {                                                          /* Estilo básico para el cuerpo de la página */
+    /* Cambio de tipografía general y color de fondo */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f0cb512;
+    color: #000000; /* Color de texto general */
+}
+
+.card {
+    background-color: #0700c535;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+
+.destacado {
+    font-weight: bold;
+    color: red;
+}
+
+
+#articulo-principal {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-left: 5px solid #0097a7;
+    margin-bottom: 20px;
+}
+
+
+.card p {
+    color: #0056b3; 
+    font-style: italic;
+}
+
+/* Aplica SOLO a los <span> que están DENTRO del elemento con id="articulo-principal" */
+#articulo-principal span {
+    background-color: yellow;
+}
