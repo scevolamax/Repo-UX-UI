@@ -1,0 +1,270 @@
+/* =============================================================
+   header.css — Sticky navigation header
+   Mobile hamburger: <details>/<summary> — CSS-only, no JS
+   Layer: components
+   ============================================================= */
+
+/* ── Block ────────────────────────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background-color: var(--color-parchment);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: none;
+  transition: box-shadow var(--transition-base);
+}
+
+/* JS-free scroll shadow: use :has() if available, else keep flat */
+@supports selector(:has(+ *)) {
+  /* Applied via a sentinel element approach — keep header flat by default */
+}
+
+/* ── Container ────────────────────────────────────────────── */
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 64px;
+}
+
+/* ── Logo ─────────────────────────────────────────────────── */
+.header__logo {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-espresso);
+  letter-spacing: var(--tracking-tight);
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.header__logo:hover { color: var(--color-caramel); text-decoration: none; }
+
+/* ── Desktop nav (hidden on mobile) ──────────────────────── */
+.header__nav    { display: none; }
+.header__actions { display: none; }
+
+.header__nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.header__nav-link {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+/* Animated underline on hover */
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-caramel);
+  border-radius: 2px;
+  transition: width var(--transition-base);
+}
+.header__nav-link:hover { color: var(--color-espresso); text-decoration: none; }
+.header__nav-link:hover::after,
+.header__nav-link[aria-current="page"]::after { width: 100%; }
+
+/* ── Search button — circular, CSS-only ──────────────────── */
+.header__search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--color-espresso);
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.header__search-btn:hover {
+  background-color: var(--color-espresso);
+  border-color: var(--color-espresso);
+  color: var(--color-cream);
+  transform: scale(1.05);
+}
+
+.header__search-btn:focus-visible {
+  outline: 2px solid var(--color-caramel);
+  outline-offset: 2px;
+}
+
+/* ── Cart button ──────────────────────────────────────────── */
+.header__actions { align-items: center; gap: var(--space-4); }
+
+.header__cart-btn { position: relative; }
+
+.header__cart-badge {
+  position: absolute;
+  top: -4px; right: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  font-family: var(--font-accent);
+  font-size: 0.625rem;
+  font-weight: var(--weight-bold);
+  background-color: var(--color-caramel);
+  color: var(--color-white);
+  border-radius: var(--radius-pill);
+}
+
+/* =============================================================
+   HAMBURGER — <details>/<summary> technique
+   ─────────────────────────────────────────────────────────────
+   HOW IT WORKS:
+   • <details> is a native disclosure widget — browser manages
+     open/closed state. No JS needed.
+   • <summary> is the clickable trigger. Its default marker
+     (triangle) is removed via list-style: none.
+   • The three <span class="header__bar"> elements form the
+     hamburger icon. CSS [open] selector targets the open state
+     and animates the bars into an X.
+   • The panel (.header__mobile-menu) is a child of <details>,
+     so it appears/disappears automatically.
+   • Keyboard: Space/Enter opens; Esc closes (native behavior).
+   ============================================================= */
+
+.header__details {
+  position: static; /* so the panel can break out of the flex row */
+}
+
+/* summary — remove native disclosure triangle, style as button */
+.header__summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  list-style: none;            /* Chrome: hides triangle */
+  transition: background-color var(--transition-fast);
+  /* Remove default focus ring — we add our own */
+  outline: none;
+}
+/* Firefox / Safari */
+.header__summary::-webkit-details-marker { display: none; }
+
+.header__summary:hover { background-color: var(--color-gray-100); }
+.header__summary:focus-visible {
+  outline: 2px solid var(--color-caramel);
+  outline-offset: 2px;
+}
+
+/* ── The three bars ───────────────────────────────────────── */
+.header__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-espresso);
+  border-radius: 2px;
+  transform-origin: center;
+  transition:
+    transform var(--transition-base),
+    opacity   var(--transition-fast),
+    width     var(--transition-base);
+}
+
+/* ── OPEN STATE — bars animate into × ────────────────────── */
+.header__details[open] .header__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header__details[open] .header__bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.header__details[open] .header__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile menu panel ────────────────────────────────────── */
+/*
+  The panel is INSIDE <details>, so it renders only when [open].
+  We position it absolutely so it overlays the page content
+  without pushing the header height.
+*/
+.header__mobile-menu {
+  position: absolute;
+  top: 64px;      /* matches header height */
+  left: 0;
+  right: 0;
+  z-index: var(--z-overlay);
+  background-color: var(--color-parchment);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+
+  /* Animate in */
+  animation: menu-slide-down var(--transition-base) ease both;
+}
+
+@keyframes menu-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.header__mobile-list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-6) var(--space-6);
+  gap: var(--space-1);
+}
+
+.header__mobile-link {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-primary);
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+.header__mobile-link:hover {
+  color: var(--color-caramel);
+  padding-left: var(--space-3);
+  text-decoration: none;
+}
+.header__mobile-link.btn {
+  margin-top: var(--space-4);
+  text-align: center;
+  border-bottom: none;
+}
+
+/* ── md: 768px — show desktop nav, hide hamburger ────────── */
+@media (min-width: 768px) {
+  .header__container  { height: 72px; }
+  .header__details    { display: none; }        /* hide hamburger */
+  .header__nav        { display: block; }
+  .header__actions    { display: flex; }
+}
+
+/* ── xl: 1440px ───────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .header__container { height: 80px; }
+  .header__logo      { font-size: var(--text-3xl); }
+}

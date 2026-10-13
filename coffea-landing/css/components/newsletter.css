@@ -1,0 +1,117 @@
+﻿/* =============================================================
+   newsletter.css — Newsletter / discount CTA (Section 8)
+   Layer: components
+   ============================================================= */
+
+.newsletter {
+  background-color: var(--color-espresso);
+  padding-block: var(--space-16);
+}
+
+/* ── Container: stacked → row ─────────────────────────────── */
+.newsletter__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: center;
+}
+
+/* ── Content ──────────────────────────────────────────────── */
+.newsletter__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--color-cream);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-3);
+}
+
+.newsletter__description {
+  font-size: var(--text-md);
+  color: var(--color-text-on-dark-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 48ch;
+}
+
+/* ── Form ─────────────────────────────────────────────────── */
+.newsletter__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 480px;
+}
+
+.newsletter__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-espresso);
+  background-color: var(--color-parchment);
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.newsletter__input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.newsletter__input:focus {
+  border-color: var(--color-caramel);
+  box-shadow: 0 0 0 3px rgba(160, 103, 58, 0.25);
+}
+
+.newsletter__form .btn--dark {
+  width: 100%;
+  background-color: var(--color-caramel);
+  color: var(--color-white);
+}
+.newsletter__form .btn--dark:hover {
+  background-color: var(--color-latte);
+  color: var(--color-espresso);
+}
+
+/* ── md: 768px — inline form ─────────────────────────────── */
+@media (min-width: 768px) {
+  .newsletter__form {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .newsletter__form .btn--dark {
+    width: auto;
+    flex-shrink: 0;
+  }
+}
+
+/* ── lg: 1024px — side-by-side content + form ────────────── */
+@media (min-width: 1024px) {
+  .newsletter__container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    gap: var(--space-16);
+    align-items: center;
+  }
+
+  .newsletter__content { flex: 1; }
+
+  .newsletter__description { max-width: none; }
+
+  .newsletter__form {
+    flex: 0 0 480px;
+    flex-direction: column;
+  }
+
+  .newsletter__form .btn--dark { width: 100%; }
+}
+
+/* ── xl: 1440px ───────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .newsletter { padding-block: var(--space-20); }
+  .newsletter__form { flex: 0 0 540px; }
+}

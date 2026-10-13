@@ -1,0 +1,165 @@
+﻿/* =============================================================
+   tokens.css — Design Tokens for Coffea Landing
+   Layer: tokens (declared in main.css)
+   ============================================================= */
+
+/* Google Fonts Import
+   - Playfair Display : editorial headings (serif)
+   - Outfit           : body / UI text (sans-serif)
+   - Poppins          : accent labels / buttons (sans-serif)
+   - Reggae One       : logo / display (display)
+   ============================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@400;500;600;700&family=Reggae+One&display=swap');
+
+:root {
+
+  /* -----------------------------------------------------------
+     COLOR PALETTE
+     Source: Coffea brand identity (warm espresso tones)
+  ----------------------------------------------------------- */
+
+  /* Core brand — espresso / coffee browns */
+  --color-espresso:        #30261C; /* darkest brown — primary text, hero bg */
+  --color-roast:           #4A3728; /* deep roast — secondary dark surfaces   */
+  --color-mocha:           #6B4C35; /* mid-brown — section backgrounds         */
+  --color-caramel:         #A0673A; /* warm caramel — interactive accents      */
+  --color-latte:           #C49A6C; /* light latte — borders, muted text       */
+  --color-cream:           #F5E6D3; /* cream — light backgrounds, cards        */
+  --color-parchment:       #FAF3E8; /* off-white parchment — page background   */
+
+  /* Neutrals */
+  --color-white:           #FFFFFF;
+  --color-black:           #0D0D0D;
+  --color-gray-100:        #F7F4F1;
+  --color-gray-200:        #EDE8E2;
+  --color-gray-400:        #B0A89E;
+  --color-gray-600:        #6E6560;
+  --color-gray-800:        #3A3330;
+
+  /* Semantic aliases */
+  --color-bg-primary:      var(--color-parchment);
+  --color-bg-dark:         var(--color-espresso);
+  --color-bg-card:         var(--color-cream);
+
+  --color-text-primary:    var(--color-espresso);
+  --color-text-secondary:  var(--color-gray-600);
+  --color-text-muted:      var(--color-gray-400);
+  --color-text-on-dark:    var(--color-cream);
+  --color-text-on-dark-muted: var(--color-latte);
+
+  --color-accent:          var(--color-caramel);
+  --color-accent-hover:    var(--color-mocha);
+
+  --color-border:          var(--color-gray-200);
+  --color-border-strong:   var(--color-latte);
+
+  /* -----------------------------------------------------------
+     TYPOGRAPHY
+  ----------------------------------------------------------- */
+
+  /* Font families */
+  --font-display:   'Reggae One', cursive;
+  --font-heading:   'Playfair Display', Georgia, serif;
+  --font-body:      'Outfit', system-ui, sans-serif;
+  --font-accent:    'Poppins', system-ui, sans-serif;
+
+  /* Font sizes — rem scale */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  1.875rem;
+  --text-3xl:  2.25rem;
+  --text-4xl:  3rem;
+  --text-5xl:  3.75rem;
+  --text-6xl:  4.5rem;
+
+  /* Font weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Line heights */
+  --leading-tight:   1.15;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
+
+  /* Letter spacing */
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.05em;
+  --tracking-widest:   0.12em;
+
+  /* -----------------------------------------------------------
+     SPACING — 4px base grid
+  ----------------------------------------------------------- */
+
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-32:  8rem;
+
+  /* Section vertical rhythm */
+  --section-padding-y: var(--space-20);
+  --section-padding-x: var(--space-6);
+
+  /* -----------------------------------------------------------
+     LAYOUT
+  ----------------------------------------------------------- */
+
+  --container-max:    1444px;
+  --container-gutter: var(--space-6);
+
+  /* -----------------------------------------------------------
+     BORDER RADIUS
+  ----------------------------------------------------------- */
+
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-pill: 9999px;
+
+  /* -----------------------------------------------------------
+     SHADOWS
+  ----------------------------------------------------------- */
+
+  --shadow-sm:   0 1px 3px rgba(48, 38, 28, 0.08);
+  --shadow-md:   0 4px 16px rgba(48, 38, 28, 0.12);
+  --shadow-lg:   0 8px 32px rgba(48, 38, 28, 0.18);
+  --shadow-card: 0 2px 12px rgba(48, 38, 28, 0.10);
+
+  /* -----------------------------------------------------------
+     TRANSITIONS
+  ----------------------------------------------------------- */
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* -----------------------------------------------------------
+     Z-INDEX SCALE
+  ----------------------------------------------------------- */
+
+  --z-base:    0;
+  --z-above:   10;
+  --z-overlay: 100;
+  --z-modal:   200;
+  --z-toast:   300;
+  --z-nav:     400;
+}
+

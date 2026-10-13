@@ -1,0 +1,99 @@
+﻿# =============================================================
+# netlify.toml — Coffea Landing
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+# =============================================================
+
+# ── Build settings ────────────────────────────────────────────
+[build]
+  publish = "coffea-landing"   # directory to deploy
+  command = ""                 # no build step — pure HTML/CSS
+
+# =============================================================
+# HEADERS
+# Applied in order: more specific rules override broader ones.
+# =============================================================
+
+# ── 1. Global security headers (all routes) ───────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+
+    # Prevent clickjacking — disallow embedding in <iframe>
+    X-Frame-Options = "DENY"
+
+    # Block MIME-type sniffing
+    X-Content-Type-Options = "nosniff"
+
+    # Enable browser XSS filter (legacy browsers)
+    X-XSS-Protection = "1; mode=block"
+
+    # Control referrer information sent with requests
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Restrict browser features (camera, mic, geolocation, etc.)
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+    # Content Security Policy
+    # - default-src 'self'              : only same-origin by default
+    # - style-src 'self' fonts.googleapis.com : allow Google Fonts CSS
+    # - font-src fonts.gstatic.com      : allow Google Fonts files
+    # - img-src 'self' data:            : images from self + inline data URIs
+    # - script-src 'self'               : no inline scripts, no CDN scripts
+    # - object-src 'none'               : disallow Flash/plugins
+    # - base-uri 'self'                 : prevent base-tag hijacking
+    # - form-action 'self'              : forms submit only to same origin
+    # - upgrade-insecure-requests       : auto-upgrade http:// to https://
+    Content-Security-Policy = """
+      default-src 'self';
+      style-src 'self' https://fonts.googleapis.com;
+      font-src https://fonts.gstatic.com;
+      img-src 'self' data:;
+      script-src 'self';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    """
+
+    # Force HTTPS for 1 year; include subdomains
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# ── 2. Immutable cache — CSS files ────────────────────────────
+# max-age=31536000  : cache for 1 year (31 536 000 seconds)
+# immutable         : browser will NOT revalidate before expiry
+# public            : shared caches (CDN, proxy) may store it
+#
+# NOTE: "immutable" only makes sense for content-hashed filenames.
+# Since this project uses static filenames (tokens.css, main.css…),
+# you should add a query-string version bump (?v=2) on each deploy
+# until a build tool (Vite, Parcel) is introduced for hashing.
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── 3. Immutable cache — static assets ────────────────────────
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── 4. HTML — always revalidate ───────────────────────────────
+# HTML should never be cached long-term; browsers must revalidate
+# on every request so deploys are picked up immediately.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma        = "no-cache"
+    Expires       = "0"
+
+# =============================================================
+# REDIRECTS
+# =============================================================
+
+# Friendly 404 fallback (single-page or direct URL access)
+[[redirects]]
+  from   = "/*"
+  to     = "/404.html"
+  status = 404

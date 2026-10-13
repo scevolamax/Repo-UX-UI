@@ -1,0 +1,21 @@
+/* 1. Declarar el orden estricto de las capas */
+@layer tokens, base, layout, components, utilities;
+
+/* 2. Importar los archivos dentro de cada capa */
+@import url('tokens.css') layer(tokens);
+@import url('base.css') layer(base);
+@import url('layout.css') layer(layout);
+
+/* Importar los componentes */
+@import url('components/header.css') layer(components);
+@import url('components/hero.css') layer(components);
+@import url('components/categories.css') layer(components);
+@import url('components/product-card.css') layer(components);
+@import url('components/carousel.css') layer(components);
+@import url('components/promo.css') layer(components);
+@import url('components/testimonial-card.css') layer(components);
+@import url('components/newsletter.css') layer(components);
+@import url('components/footer.css') layer(components);
+
+/* Importar utilidades al final */
+@import url('utilities.css') layer(utilities);

@@ -1,0 +1,146 @@
+﻿/* =============================================================
+   testimonial-card.css — Testimonials section (Section 7)
+   Layer: components
+   ============================================================= */
+
+/* ── Section ──────────────────────────────────────────────── */
+.testimonials {
+  background-color: var(--color-cream);
+}
+
+/* ── Track: horizontal scroll on mobile, grid on md+ ─────── */
+.testimonials__track {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: var(--space-2);
+}
+.testimonials__track::-webkit-scrollbar { display: none; }
+
+/* ── Pagination dots ──────────────────────────────────────── */
+.testimonials__pagination {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+}
+
+.testimonials__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-gray-400);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-base), width var(--transition-base);
+}
+
+.testimonials__dot--active,
+.testimonials__dot:hover {
+  background-color: var(--color-espresso);
+  width: 24px;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.testimonial-card {
+  flex: 0 0 80vw;
+  max-width: 340px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  margin: 0;
+  transition: box-shadow var(--transition-base), transform var(--transition-fast);
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+/* ── Card header ──────────────────────────────────────────── */
+.testimonial-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--color-latte);
+}
+
+/* figcaption is block-level but inside flex — no change needed */
+.testimonial-card__author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonial-card__name {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-espresso);
+}
+
+.testimonial-card__role {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+
+/* ── Stars ────────────────────────────────────────────────── */
+.testimonial-card__stars {
+  font-size: var(--text-md);
+  color: var(--color-caramel);
+  letter-spacing: 2px;
+}
+
+/* ── Quote ────────────────────────────────────────────────── */
+.testimonial-card__quote {
+  flex: 1;
+}
+
+.testimonial-card__quote p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  font-style: italic;
+}
+
+/* ── md: 768px — 2-column grid ───────────────────────────── */
+@media (min-width: 768px) {
+  .testimonials__track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    gap: var(--space-6);
+  }
+
+  .testimonial-card {
+    flex: none;
+    max-width: none;
+  }
+
+  /* Only show dots on mobile (used as carousel) */
+  .testimonials__pagination { display: none; }
+}
+
+/* ── lg: 1024px — 3-column grid ──────────────────────────── */
+@media (min-width: 1024px) {
+  .testimonials__track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

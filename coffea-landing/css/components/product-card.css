@@ -1,0 +1,296 @@
+﻿/* =============================================================
+   product-card.css — Carousel + Product Cards + Heart Favorite
+   Layer: components
+
+   THREE CSS-ONLY TECHNIQUES DOCUMENTED HERE:
+
+   1. CAROUSEL  — overflow-x: auto + scroll-snap-type: x mandatory
+   2. HEART BTN — <input type="checkbox"> + <label> + :checked
+   3. (nav hamburger is in header.css)
+   ============================================================= */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+.special-coffee {
+  background-color: var(--color-cream);
+}
+
+.special-coffee__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-10);
+}
+
+/* =============================================================
+   1. CAROUSEL
+   ─────────────────────────────────────────────────────────────
+   HOW IT WORKS:
+   • .product-carousel is a flex container with overflow-x: auto
+     so cards spill beyond the viewport and become scrollable.
+   • scroll-snap-type: x mandatory on the container tells the
+     browser to snap to a snap point after every scroll gesture.
+   • scroll-snap-align: start on each .product-card defines WHERE
+     the snap should land — at the leading edge of each card.
+   • scrollbar-width: none hides the scrollbar visually while
+     keeping the scroll interaction functional.
+   • On lg+ the layout switches to CSS Grid (no overflow),
+     making the carousel behavior disappear naturally.
+   ============================================================= */
+
+.product-carousel {
+  /* Flex row — cards lay out horizontally */
+  display: flex;
+  gap: var(--space-5);
+
+  /* Enable horizontal scroll */
+  overflow-x: auto;
+  overflow-y: visible;
+
+  /* Snap behavior */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
+
+  /* Visual polish */
+  scrollbar-width: none;             /* Firefox */
+  padding-bottom: var(--space-2);   /* space for shadow overflow */
+
+  /* Allow cards' box-shadow to show outside container bounds */
+  padding-inline: var(--space-1);
+  margin-inline: calc(-1 * var(--space-1));
+}
+.product-carousel::-webkit-scrollbar { display: none; }    /* Chrome/Safari */
+
+/* ── lg: 1024px — switch carousel → 4-col grid ───────────── */
+@media (min-width: 1024px) {
+  .product-carousel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+}
+
+
+/* =============================================================
+   2. PRODUCT CARD
+   ============================================================= */
+
+.product-card {
+  /* Carousel: fixed width so cards peek at the edge */
+  flex: 0 0 76vw;
+  max-width: 300px;
+  scroll-snap-align: start;
+
+  /* Card styles */
+  position: relative;          /* anchor for the absolute heart label */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: visible;           /* let shadow escape */
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Clip internal content (image) without clipping shadow */
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* On grid (lg+) cards stretch to fill column */
+@media (min-width: 1024px) {
+  .product-card {
+    flex: none;
+    max-width: none;
+  }
+}
+
+/* ── md: adjust card peek width ──────────────────────────── */
+@media (min-width: 768px) {
+  .product-card { flex: 0 0 44vw; }
+}
+
+
+/* =============================================================
+   3. HEART FAVORITE — CSS-only technique
+   ─────────────────────────────────────────────────────────────
+   HOW IT WORKS:
+   • <input type="checkbox" id="fav-N" class="product-card__fav-input">
+     is placed as the FIRST child of .product-card (before the figure).
+     It is visually hidden (opacity: 0, pointer-events: none,
+     position: absolute) but remains in the DOM for :checked state.
+
+   • <label for="fav-N" class="product-card__fav-label"> is
+     positioned absolute over the top-right corner of the card.
+     The label is the VISIBLE INTERACTIVE ELEMENT — clicking it
+     toggles the hidden checkbox.
+
+   • The heart shape is drawn via label::before (empty outline) and
+     label::after (solid fill), both using CSS clip-path heart.
+
+   • The CSS combinator used is:
+       .product-card__fav-input:checked + .product-card__fav-label
+     This works because input and label are adjacent siblings
+     inside .product-card.
+
+   • :checked state: fills the heart, changes color to red,
+     adds a bounce animation.
+
+   • Keyboard: the hidden input is tabbable (opacity:0 ≠ display:none),
+     so keyboard users can Tab to it and press Space to toggle.
+     The aria-label on the input provides the accessible name.
+   ============================================================= */
+
+/* Hidden checkbox — keeps tab order, invisible, not interactive via pointer */
+.product-card__fav-input {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index: 3;    /* above the label so it catches clicks when needed */
+  pointer-events: none;  /* label handles clicks; input keeps tab order */
+}
+
+/* Focusable ring shown on keyboard focus */
+.product-card__fav-input:focus-visible + .product-card__fav-label {
+  outline: 2px solid var(--color-caramel);
+  outline-offset: 2px;
+}
+
+/* ── Visible label (the button-like heart) ────────────────── */
+.product-card__fav-label {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.88);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-card__fav-label:hover {
+  background-color: var(--color-white);
+  transform: scale(1.1);
+}
+
+/* Heart icon via ::before pseudo-element
+   Unicode ♡ (outline) → changes to ♥ (solid) on :checked */
+.product-card__fav-label::before {
+  content: '\2661';    /* ♡ WHITE HEART SUIT */
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--color-gray-400);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  /* Remove font variation that might distort on some OSes */
+  font-family: sans-serif;
+}
+
+/* ── CHECKED STATE — heart fills ──────────────────────────── */
+.product-card__fav-input:checked + .product-card__fav-label {
+  background-color: #fff1f2;  /* very light rose */
+}
+
+.product-card__fav-input:checked + .product-card__fav-label::before {
+  content: '\2665';    /* ♥ BLACK HEART SUIT */
+  color: #e11d48;      /* rose-600 */
+  transform: scale(1.2);
+  animation: heart-pop 200ms ease both;
+}
+
+@keyframes heart-pop {
+  0%   { transform: scale(0.8); }
+  60%  { transform: scale(1.3); }
+  100% { transform: scale(1.2); }
+}
+
+
+/* =============================================================
+   CARD INTERNALS (shared with grid and carousel)
+   ============================================================= */
+
+/* ── Figure ───────────────────────────────────────────────── */
+.product-card__figure {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background-color: var(--color-gray-100);
+  flex-shrink: 0;
+}
+
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-card__img { transform: scale(1.05); }
+
+/* ── Body ─────────────────────────────────────────────────── */
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-5);
+  gap: var(--space-3);
+}
+
+.product-card__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-espresso);
+  line-height: var(--leading-snug);
+}
+
+.product-card__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  flex: 1;
+}
+
+/* ── Footer row ───────────────────────────────────────────── */
+.product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.product-card__price {
+  font-family: var(--font-accent);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-caramel);
+}
+
+.product-card__cta {
+  font-size: 0.75rem;
+  padding: var(--space-2) var(--space-4);
+}

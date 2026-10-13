@@ -1,0 +1,132 @@
+﻿/* =============================================================
+   carousel.css — Special Dessert section (Section 5)
+   Layout: image left + list right on lg+
+   Layer: components
+   ============================================================= */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+.special-dessert {
+  background-color: var(--color-parchment);
+}
+
+/* ── Container: stacked mobile, side-by-side lg ──────────── */
+.special-dessert__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+/* ── Feature image (hidden on mobile) ────────────────────── */
+.special-dessert__feature-figure {
+  display: none;
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.special-dessert__feature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Content column ───────────────────────────────────────── */
+.special-dessert__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* ── Dessert list ─────────────────────────────────────────── */
+.dessert-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ── Dessert item ─────────────────────────────────────────── */
+.dessert-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base), transform var(--transition-fast);
+}
+
+.dessert-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+/* ── Dessert figure ───────────────────────────────────────── */
+.dessert-item__figure {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+  margin: 0;
+}
+
+.dessert-item__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Dessert body ─────────────────────────────────────────── */
+.dessert-item__body { flex: 1; }
+
+.dessert-item__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--color-espresso);
+  margin-bottom: var(--space-1);
+}
+
+.dessert-item__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+/* ── Price ────────────────────────────────────────────────── */
+.dessert-item__price {
+  flex-shrink: 0;
+  font-family: var(--font-accent);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-caramel);
+}
+
+/* ── lg: 1024px — side-by-side layout ────────────────────── */
+@media (min-width: 1024px) {
+  .special-dessert__container {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--space-16);
+  }
+
+  .special-dessert__feature-figure {
+    display: block;
+    flex: 0 0 40%;
+    max-width: 480px;
+  }
+
+  .special-dessert__content {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+/* ── xl: 1440px ───────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .special-dessert__feature-figure { max-width: 540px; }
+  .dessert-item__figure { width: 88px; height: 88px; }
+}
