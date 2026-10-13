@@ -1,0 +1,290 @@
+:root {
+    --color-primario: #2c3e50;
+    --color-secundario: #e67e22;
+    --color-fondo: #f8f9fa;
+    --color-texto: #333333;
+    --color-blanco: #ffffff;
+    --espaciado-seccion: 80px 20px;
+    --borde-radio: 8px;
+    --transicion: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    line-height: 1.6;
+}
+
+/*NAVBAR FIJA (FLEXBOX)*/
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 15px 40px;
+    z-index: 1000;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transicion);
+}
+
+.nav-links a:hover {
+    color: var(--color-secundario);
+}
+
+/* SECCIÓN HERO*/
+.hero {
+    height: 100vh;
+    background-image: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://via.placeholder.com/1920x1080/bdc3c7/2c3e50?text=Imagen+Propiedad');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-blanco);
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 12px 30px;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--borde-radio);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transicion);
+}
+
+.btn:hover {
+    background-color: #d35400;
+    transform: translateY(-2px);
+}
+
+/* SECCIÓN SERVICIOS (CSS GRID)*/
+.servicios {
+    padding: var(--espaciado-seccion);
+    text-align: center;
+}
+
+.servicios h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: var(--color-primario);
+}
+
+.grid-servicios {
+    display: grid;
+    /* Grid responsivo automático sin necesidad de media queries extra */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-servicio {
+    background-color: var(--color-blanco);
+    padding: 30px;
+    border-radius: var(--borde-radio);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: var(--transicion);
+    border-bottom: 4px solid transparent;
+}
+
+.card-servicio:hover {
+    transform: translateY(-5px);
+    border-bottom: 4px solid var(--color-secundario);
+}
+
+/* TESTIMONIOS (CARRUSEL SCROLL-SNAP)*/
+.testimonios {
+    padding: var(--espaciado-seccion);
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    text-align: center;
+}
+
+.testimonios h2 {
+    margin-bottom: 40px;
+}
+
+.carrusel-snap {
+
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    /* Ocultar barra de scroll en navegadores webkit */
+    scrollbar-width: none; 
+}
+
+.carrusel-snap::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonio-card {
+    /* Alineación del elemento al hacer scroll */
+    scroll-snap-align: center;
+    /* Evita que las tarjetas se encojan, forzando un ancho mínimo visible */
+    flex: 0 0 85%; 
+    background-color: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: var(--borde-radio);
+}
+
+.testimonio-card p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+/* CONTACTO Y FOOTER*/
+.contacto {
+    padding: var(--espaciado-seccion);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contacto h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-primario);
+}
+
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--borde-radio);
+    font-family: inherit;
+}
+
+.footer {
+    background-color: #1a252f;
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 20px;
+}
+
+/* ANIMACIONES (@KEYFRAMES)*/
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.delay { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+/* MEDIA QUERIES (RESPONSIVIDAD) */
+
+/* Breakpoint 1: Tablets (menor a 768px) */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+}
+
+/* Breakpoint 2: Móviles (menor a 480px) */
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+        margin-top: 50px; /* Compensa la navbar colapsada */
+    }
+    
+    .testimonio-card {
+        flex: 0 0 100%; /* Ocupa todo el ancho en móviles */
+    }
+}

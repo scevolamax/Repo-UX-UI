@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.contenedor-carga {
+    text-align: center;
+    color: #555;
+}
+
+/* Diseño del Spinner y Propiedades de Animación */
+.spinner {
+    width: 60px;
+    height: 60px;
+    /* Se crea un círculo con un borde gris y un borde superior de color para notar el giro */
+    border: 6px solid #e0e0e0;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    
+    animation-name: rotacion-spinner;
+    
+    /* duration: Controla cuánto tarda en completar un ciclo (1 segundo) */
+    animation-duration: 1s; 
+    
+    /* timing-function: 'linear' mantiene una velocidad constante, evitando aceleraciones bruscas */
+    animation-timing-function: linear; 
+    
+    /* iteration-count: 'infinite' hace que la animación no se detenga nunca */
+    animation-iteration-count: infinite; 
+}
+
+/* Definición de los @keyframes */
+/* REQUISITO: Sintaxis correcta para definir los estados de la animación */
+@keyframes rotacion-spinner {
+    0% {
+        /* Estado inicial: sin rotación */
+        transform: rotate(0deg);
+    }
+    100% {
+        /* Estado final: giro completo de 360 grados */
+        transform: rotate(360deg);
+    }
+}

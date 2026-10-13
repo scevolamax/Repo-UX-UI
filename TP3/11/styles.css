@@ -1,0 +1,66 @@
+body {
+    font-family: 'Courier New', Courier, monospace; 
+    background-color: #1a1a1a;
+    color: #f1c40f;
+    padding: 30px;
+}
+
+.contenedor-relojes {
+    max-width: 600px;
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #7f8c8d;
+}
+
+h2 {
+    text-align: center;
+    border-bottom: 1px solid #7f8c8d;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.enlaces-taller {
+    list-style: none; /* Elimina las viñetas por defecto */
+    padding: 0;
+}
+
+.enlaces-taller li {
+    margin-bottom: 8px;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+/* Pseudo-clase :nth-child() */
+/* Aplica un color de fondo diferente a los elementos pares de la lista para un efecto "cebra" */
+.enlaces-taller li:nth-child(even) {
+    background-color: #34495e;
+}
+
+.enlaces-taller li:nth-child(odd) {
+    background-color: #273746;
+}
+
+.enlaces-taller a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 16px;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+/* Pseudo-clase :hover */
+/* Cambia el color y desplaza ligeramente el texto hacia la derecha al pasar el mouse */
+.enlaces-taller a:hover {
+    color: #e67e22;
+    transform: translateX(8px);
+}
+
+/* Pseudo-elemento ::before */
+/* Inserta un icono de un engranaje antes de cada enlace sin necesidad de modificar el HTML */
+.enlaces-taller a::before {
+    content: "⚙️";
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+

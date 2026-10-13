@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refugio del Río - Alquiler Turístico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR FIJA -->
+    <header class="navbar">
+        <div class="logo">Refugio del Río</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#servicios">Comodidades</a></li>
+                <li><a href="#testimonios">Reseñas</a></li>
+                <li><a href="#contacto">Reservas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECCIÓN HERO -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1 class="fade-in-up">Tu escape perfecto en Concepción del Uruguay</h1>
+                <p class="fade-in-up delay">Disfruta de una estadía inolvidable con tarifas flexibles y todas las comodidades que necesitas para desconectar.</p>
+                <a href="#contacto" class="btn fade-in-up delay-2">Consultar Disponibilidad</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN SERVICIOS (GRID) -->
+        <section id="servicios" class="servicios">
+            <h2>Comodidades Destacadas</h2>
+            <div class="grid-servicios">
+                <div class="card-servicio">
+                    <h3>Ubicación Céntrica</h3>
+                    <p>A minutos de los principales puntos de interés y la costanera.</p>
+                </div>
+                <div class="card-servicio">
+                    <h3>Tarifas Flexibles</h3>
+                    <p>Opciones de reserva adaptables a cambios de planes de última hora.</p>
+                </div>
+                <div class="card-servicio">
+                    <h3>Equipamiento Completo</h3>
+                    <p>Cocina equipada, Wi-Fi de alta velocidad y climatización.</p>
+                </div>
+                <div class="card-servicio">
+                    <h3>Autogestión</h3>
+                    <p>Ingreso autónomo y soporte rápido para resolver cualquier eventualidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN TESTIMONIOS (CARRUSEL SCROLL-SNAP) -->
+        <section id="testimonios" class="testimonios">
+            <h2>Lo que dicen nuestros huéspedes</h2>
+            <div class="carrusel-snap">
+                <article class="testimonio-card">
+                    <p>"Excelente ubicación. La configuración de la reserva fue súper rápida y no tuvimos ningún problema al llegar."</p>
+                    <h4>— Martín G.</h4>
+                </article>
+                <article class="testimonio-card">
+                    <p>"El lugar estaba impecable. Valoramos mucho la flexibilidad en la tarifa porque tuvimos que ajustar las fechas."</p>
+                    <h4>— Laura S.</h4>
+                </article>
+                <article class="testimonio-card">
+                    <p>"Ideal para descansar unos días. Todo funcionó a la perfección y la atención fue de primera."</p>
+                    <h4>— Diego F.</h4>
+                </article>
+                <article class="testimonio-card">
+                    <p>"Muy cómodo para trabajar remoto y luego salir a pasear. Wi-Fi excelente."</p>
+                    <h4>— Sofía R.</h4>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto" class="contacto">
+            <h2>Contacto y Reservas</h2>
+            <form action="#" class="formulario-contacto">
+                <div class="input-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="fechas">Fechas de estadía estimadas</label>
+                    <input type="text" id="fechas" placeholder="Ej: 15 al 20 de Noviembre">
+                </div>
+                <div class="input-group">
+                    <label for="mensaje">Consulta</label>
+                    <textarea id="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Consulta</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Refugio del Río - Proyecto Integrador Diseño UX-UI</p>
+    </footer>
+
+</body>
+</html>

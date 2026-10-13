@@ -1,0 +1,29 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e4e4e0;
+}
+
+/* Contenedor para poner las tarjetas en fila */
+.contenedor-tarjetas {
+    display: flex; /* flexbox para alinearlas en fila */
+    justify-content: space-around; /* Distribuye el espacio entre ellas */
+}
+
+/* Estilos de la tarjeta evaluando el modelo de caja */
+.card {
+    /* REQUISITO: Uso explícito de box-sizing */
+    box-sizing: border-box; 
+    
+    /* Definimos un ancho fijo para las tres tarjetas */
+    width: 30%; 
+    
+    /*  margin, padding y border */
+    padding: 20px;            /* Espacio interno entre el texto y el borde */
+    margin: 15px;             /* Espacio externo que separa las tarjetas entre sí */
+    border: 3px solid #2c3e50; /* Borde visible para notar el límite de la caja */
+    
+    /* Estilos visuales complementarios */
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    text-align: center;
+}

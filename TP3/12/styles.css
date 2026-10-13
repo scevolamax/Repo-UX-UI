@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Botón Fijo (Volver arriba) */
+.btn-volver-arriba {
+    /* position fixed para anclarlo a la esquina de la ventana*/
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    
+    /* z-index para asegurar que flote por encima del texto al hacer scroll*/
+    z-index: 100;
+    
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.btn-volver-arriba:hover {
+    background-color: #c0392b;
+}
+
+/* Tooltip */
+/* position relative en el contenedor padre para servir como ancla*/
+.tooltip-container {
+    position: relative;
+    color: #2980b9;
+    font-weight: bold;
+    cursor: help;
+    border-bottom: 1px dotted #2980b9;
+}
+
+.tooltip-text {
+    position: absolute;
+    bottom: 150%; /* Sitúa el tooltip justo por encima del texto padre */
+    left: 50%;
+    transform: translateX(-50%); /* Lo centra horizontalmente */
+    
+    /* z-index para que no quede tapado por otros elementos*/
+    z-index: 10;
+    
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 14px;
+    
+    /* Oculto por defecto usando visibilidad y opacidad para animarlo, esconde el mensaje interactivo */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+}
+
+/* Comportamiento correcto al hacer hover en el contenedor padre/ permite el scroll de la página */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
