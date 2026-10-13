@@ -34,17 +34,8 @@
 
       <!-- Desktop actions (visible md+) -->
       <div class="header__actions">
-        <button type="button" class="header__search-btn" aria-label="Buscar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <circle cx="11" cy="11" r="8"/>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-        </button>
-        <button type="button" class="header__cart-btn btn btn--ghost" aria-label="Shopping cart">
-          <img src="assets/icons/cart.svg" alt="" aria-hidden="true" width="22" height="22">
-          <span class="header__cart-badge" aria-live="polite">0</span>
+        <button type="button" class="header__search-btn" aria-label="Search">
+          <img src="../assets/icons/search.svg" alt="" aria-hidden="true" width="18" height="18">
         </button>
         <a href="#newsletter" class="btn btn--pill btn--dark">Order Now</a>
       </div>
@@ -104,7 +95,7 @@
         </div>
         <figure class="hero__figure">
           <img
-            src="assets/img/hero-coffee.avif"
+            src="../assets/img/hero.avif"
             alt="A steaming cup of specialty coffee surrounded by roasted beans"
             class="hero__img"
             width="600" height="600"
@@ -130,41 +121,33 @@
           <li class="category-card">
             <a href="#special-coffee" class="category-card__link">
               <figure class="category-card__figure">
-                <img src="assets/img/cat-espresso.avif" alt="Espresso" class="category-card__img" width="200" height="200" loading="lazy">
+                <img src="../assets/icons/cat-hot_coffee.svg" alt="Hot Coffee" class="category-card__img" width="80" height="80" loading="lazy" decoding="async">
               </figure>
-              <span class="category-card__label">Espresso</span>
+              <span class="category-card__label">Hot Coffee</span>
             </a>
           </li>
           <li class="category-card category-card--active">
             <a href="#special-coffee" class="category-card__link">
               <figure class="category-card__figure">
-                <img src="assets/img/cat-cappuccino.avif" alt="Cappuccino" class="category-card__img" width="200" height="200" loading="lazy">
+                <img src="../assets/icons/cat-cold_coffee.svg" alt="Cold Coffee" class="category-card__img" width="80" height="80" loading="lazy" decoding="async">
               </figure>
-              <span class="category-card__label">Cappuccino</span>
+              <span class="category-card__label">Cold Coffee</span>
             </a>
           </li>
           <li class="category-card">
             <a href="#special-coffee" class="category-card__link">
               <figure class="category-card__figure">
-                <img src="assets/img/cat-latte.avif" alt="Latte" class="category-card__img" width="200" height="200" loading="lazy">
+                <img src="../assets/icons/cat-cup_coffee.svg" alt="Cup Coffee" class="category-card__img" width="80" height="80" loading="lazy" decoding="async">
               </figure>
-              <span class="category-card__label">Latte</span>
+              <span class="category-card__label">Cup Coffee</span>
             </a>
           </li>
           <li class="category-card">
             <a href="#special-dessert" class="category-card__link">
               <figure class="category-card__figure">
-                <img src="assets/img/cat-dessert.avif" alt="Desserts" class="category-card__img" width="200" height="200" loading="lazy">
+                <img src="../assets/icons/cat-dessert.svg" alt="Desserts" class="category-card__img" width="80" height="80" loading="lazy" decoding="async">
               </figure>
               <span class="category-card__label">Desserts</span>
-            </a>
-          </li>
-          <li class="category-card">
-            <a href="#cta" class="category-card__link">
-              <figure class="category-card__figure">
-                <img src="assets/img/cat-beans.avif" alt="Coffee Beans" class="category-card__img" width="200" height="200" loading="lazy">
-              </figure>
-              <span class="category-card__label">Beans</span>
             </a>
           </li>
         </ul>
@@ -213,8 +196,8 @@
             <label for="fav-coffee-1" class="product-card__fav-label" aria-hidden="true"></label>
 
             <figure class="product-card__figure">
-              <img src="assets/img/coffee-caramel-macchiato.avif" alt="Caramel Macchiato"
-                class="product-card__img" width="280" height="280" loading="lazy">
+              <img src="../assets/img/coffee-1.avif" alt="Caramel Macchiato"
+                class="product-card__img" width="280" height="280" loading="lazy" decoding="async">
             </figure>
             <div class="product-card__body">
               <h3 class="product-card__name">Caramel Macchiato</h3>
@@ -233,8 +216,8 @@
             <input type="checkbox" id="fav-coffee-2" class="product-card__fav-input" aria-label="Save Cold Brew to favorites">
             <label for="fav-coffee-2" class="product-card__fav-label" aria-hidden="true"></label>
             <figure class="product-card__figure">
-              <img src="assets/img/coffee-cold-brew.avif" alt="Cold Brew"
-                class="product-card__img" width="280" height="280" loading="lazy">
+              <img src="../assets/img/coffee-2.avif" alt="Cold Brew"
+                class="product-card__img" width="280" height="280" loading="lazy" decoding="async">
             </figure>
             <div class="product-card__body">
               <h3 class="product-card__name">Cold Brew</h3>
@@ -253,8 +236,8 @@
             <input type="checkbox" id="fav-coffee-3" class="product-card__fav-input" aria-label="Save Flat White to favorites">
             <label for="fav-coffee-3" class="product-card__fav-label" aria-hidden="true"></label>
             <figure class="product-card__figure">
-              <img src="assets/img/coffee-flat-white.avif" alt="Flat White"
-                class="product-card__img" width="280" height="280" loading="lazy">
+              <img src="../assets/img/coffee-3.avif" alt="Flat White"
+                class="product-card__img" width="280" height="280" loading="lazy" decoding="async">
             </figure>
             <div class="product-card__body">
               <h3 class="product-card__name">Flat White</h3>
@@ -273,8 +256,8 @@
             <input type="checkbox" id="fav-coffee-4" class="product-card__fav-input" aria-label="Save Mocha Latte to favorites">
             <label for="fav-coffee-4" class="product-card__fav-label" aria-hidden="true"></label>
             <figure class="product-card__figure">
-              <img src="assets/img/coffee-mocha.avif" alt="Mocha Latte"
-                class="product-card__img" width="280" height="280" loading="lazy">
+              <img src="../assets/img/coffee-4.avif" alt="Mocha Latte"
+                class="product-card__img" width="280" height="280" loading="lazy" decoding="async">
             </figure>
             <div class="product-card__body">
               <h3 class="product-card__name">Mocha Latte</h3>
@@ -304,8 +287,8 @@
     <section id="special-dessert" class="special-dessert" aria-labelledby="special-dessert-title">
       <div class="special-dessert__container container">
         <figure class="special-dessert__feature-figure" aria-hidden="true">
-          <img src="assets/img/dessert-feature.avif" alt="" class="special-dessert__feature-img"
-            width="500" height="600" loading="lazy">
+          <img src="../assets/img/dessert-1.avif" alt="" class="special-dessert__feature-img"
+            width="500" height="600" loading="lazy" decoding="async">
         </figure>
         <div class="special-dessert__content">
           <header class="section-header section-header--left">
@@ -318,7 +301,7 @@
           <ul class="dessert-list" role="list">
             <li class="dessert-item">
               <figure class="dessert-item__figure">
-                <img src="assets/img/dessert-tiramisu.avif" alt="Tiramisu" class="dessert-item__img" width="80" height="80" loading="lazy">
+                <img src="../assets/img/dessert-2.avif" alt="Tiramisu" class="dessert-item__img" width="80" height="80" loading="lazy" decoding="async">
               </figure>
               <div class="dessert-item__body">
                 <h3 class="dessert-item__name">Tiramisu</h3>
@@ -328,7 +311,7 @@
             </li>
             <li class="dessert-item">
               <figure class="dessert-item__figure">
-                <img src="assets/img/dessert-cheesecake.avif" alt="Coffee Cheesecake" class="dessert-item__img" width="80" height="80" loading="lazy">
+                <img src="../assets/img/dessert-3.avif" alt="Coffee Cheesecake" class="dessert-item__img" width="80" height="80" loading="lazy" decoding="async">
               </figure>
               <div class="dessert-item__body">
                 <h3 class="dessert-item__name">Coffee Cheesecake</h3>
@@ -338,7 +321,7 @@
             </li>
             <li class="dessert-item">
               <figure class="dessert-item__figure">
-                <img src="assets/img/dessert-eclair.avif" alt="Mocha Éclair" class="dessert-item__img" width="80" height="80" loading="lazy">
+                <img src="../assets/img/dessert-4.avif" alt="Mocha Éclair" class="dessert-item__img" width="80" height="80" loading="lazy" decoding="async">
               </figure>
               <div class="dessert-item__body">
                 <h3 class="dessert-item__name">Mocha Éclair</h3>
@@ -357,13 +340,13 @@
          SECTION 6: CTA — COFFEE BEANS
          =================================================== -->
     <section id="cta" class="promo" aria-labelledby="promo-title">
-      <img src="assets/img/promo-hand.avif" alt="" class="promo__img-deco promo__img-deco--left" aria-hidden="true" loading="lazy">
+      <img src="../assets/img/promo-hand.avif" alt="" class="promo__img-deco promo__img-deco--left" aria-hidden="true" width="320" height="480" loading="lazy" decoding="async">
       <div class="promo__content">
         <h2 id="promo-title" class="promo__title">Check Out Our Best<br>Coffee Beans</h2>
         <p class="promo__description">Single-origin. Freshly roasted. Shipped to your door within 48 hours.</p>
         <a href="#" class="btn btn--pill btn--dark">Explore Our Products &rsaquo;&rsaquo;</a>
       </div>
-      <img src="assets/img/promo-beans.avif" alt="" class="promo__img-deco promo__img-deco--right" aria-hidden="true" loading="lazy">
+      <img src="../assets/img/promo-beans.avif" alt="" class="promo__img-deco promo__img-deco--right" aria-hidden="true" width="320" height="320" loading="lazy" decoding="async">
     </section>
 
 
@@ -379,7 +362,7 @@
         <div class="testimonials__track" role="list" aria-label="Customer testimonials">
           <figure class="testimonial-card" role="listitem">
             <div class="testimonial-card__header">
-              <img src="assets/img/avatar-james.avif" alt="James Smith" class="testimonial-card__avatar" width="48" height="48" loading="lazy">
+              <img src="../assets/img/avatar-1.avif" alt="James Smith" class="testimonial-card__avatar" width="48" height="48" loading="lazy" decoding="async">
               <figcaption class="testimonial-card__author">
                 <strong class="testimonial-card__name">James Smith</strong>
                 <span class="testimonial-card__role">Entrepreneur</span>
@@ -392,7 +375,7 @@
           </figure>
           <figure class="testimonial-card" role="listitem">
             <div class="testimonial-card__header">
-              <img src="assets/icon/avatar-sofia.svg" alt="Sofia Reyes" class="testimonial-card__avatar" width="48" height="48" loading="lazy">
+              <img src="../assets/img/avatar-1.avif" alt="Sofia Reyes" class="testimonial-card__avatar" width="48" height="48" loading="lazy" decoding="async">
               <figcaption class="testimonial-card__author">
                 <strong class="testimonial-card__name">Sofia Reyes</strong>
                 <span class="testimonial-card__role">Designer</span>
@@ -405,7 +388,7 @@
           </figure>
           <figure class="testimonial-card" role="listitem">
             <div class="testimonial-card__header">
-              <img src="assets/img/avatar-luca.avif" alt="Luca Ferreira" class="testimonial-card__avatar" width="48" height="48" loading="lazy">
+              <img src="../assets/img/avatar-1.avif" alt="Luca Ferreira" class="testimonial-card__avatar" width="48" height="48" loading="lazy" decoding="async">
               <figcaption class="testimonial-card__author">
                 <strong class="testimonial-card__name">Luca Ferreira</strong>
                 <span class="testimonial-card__role">Software Engineer</span>
@@ -498,10 +481,10 @@
       <div class="footer__social">
         <h3 class="footer__social-title">Social Media</h3>
         <ul class="footer__social-list" role="list">
-          <li><a href="#" class="footer__social-link" aria-label="Follow us on X (Twitter)"><img src="assets/icons/social-twitter.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
-          <li><a href="#" class="footer__social-link" aria-label="Follow us on Instagram"><img src="assets/icons/social-instagram.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
-          <li><a href="#" class="footer__social-link" aria-label="Follow us on Facebook"><img src="assets/icons/social-facebook.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
-          <li><a href="#" class="footer__social-link" aria-label="Watch us on YouTube"><img src="assets/icons/social-youtube.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
+          <li><a href="#" class="footer__social-link" aria-label="Follow us on X (Twitter)"><img src="../assets/icons/social-twitter.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
+          <li><a href="#" class="footer__social-link" aria-label="Follow us on Instagram"><img src="../assets/icons/social-instagram.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
+          <li><a href="#" class="footer__social-link" aria-label="Follow us on Facebook"><img src="../assets/icons/social-facebook.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
+          <li><a href="#" class="footer__social-link" aria-label="Follow us on LinkedIn"><img src="../assets/icons/social-linkedin.svg" alt="" aria-hidden="true" width="24" height="24"></a></li>
         </ul>
       </div>
     </div>
