@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cubrí Seguros — Contratación Digital de Seguro de Celular</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-600 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" id="logo-inicio" class="flex items-center gap-2.5 text-slate-900 font-extrabold text-lg tracking-tight focus:outline-none">
+        <span class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-sm">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+          </svg>
+        </span>
+        <span>Cubrí <span class="text-indigo-600">Seguros</span></span>
+      </a>
+
+      <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+        <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+        </svg>
+        <span>Contratación 100% digital</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10 pb-36 lg:pb-12">
+
+    <!-- Stepper (Visible en pasos 1 al 4) -->
+    <nav id="stepper" aria-label="Progreso de contratación" class="mb-6 lg:mb-8" hidden>
+      <ol class="grid grid-cols-4 gap-2 sm:gap-4 bg-white border border-slate-200 rounded-xl p-3 sm:p-4 shadow-xs">
+        <li data-stepper-paso="1" class="flex items-center gap-2 sm:gap-3 text-indigo-600 font-semibold">
+          <span data-stepper-indicador="1" class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold bg-indigo-600 text-white shrink-0">
+            1
+          </span>
+          <div class="min-w-0">
+            <p class="text-[11px] uppercase tracking-wider text-slate-500 hidden sm:block">Paso 1</p>
+            <p class="text-xs sm:text-sm truncate">Cotizar</p>
+          </div>
+        </li>
+
+        <li data-stepper-paso="2" class="flex items-center gap-2 sm:gap-3 text-slate-500">
+          <span data-stepper-indicador="2" class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold bg-slate-100 text-slate-500 shrink-0">
+            2
+          </span>
+          <div class="min-w-0">
+            <p class="text-[11px] uppercase tracking-wider text-slate-500 hidden sm:block">Paso 2</p>
+            <p class="text-xs sm:text-sm truncate">Plan</p>
+          </div>
+        </li>
+
+        <li data-stepper-paso="3" class="flex items-center gap-2 sm:gap-3 text-slate-500">
+          <span data-stepper-indicador="3" class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold bg-slate-100 text-slate-500 shrink-0">
+            3
+          </span>
+          <div class="min-w-0">
+            <p class="text-[11px] uppercase tracking-wider text-slate-500 hidden sm:block">Paso 3</p>
+            <p class="text-xs sm:text-sm truncate">Datos</p>
+          </div>
+        </li>
+
+        <li data-stepper-paso="4" class="flex items-center gap-2 sm:gap-3 text-slate-500">
+          <span data-stepper-indicador="4" class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold bg-slate-100 text-slate-500 shrink-0">
+            4
+          </span>
+          <div class="min-w-0">
+            <p class="text-[11px] uppercase tracking-wider text-slate-500 hidden sm:block">Paso 4</p>
+            <p class="text-xs sm:text-sm truncate">Pago</p>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- ==========================================
+         PASO 0: INICIO / CATÁLOGO
+         ========================================== -->
+    <section data-paso="0" aria-labelledby="titulo-paso-0">
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+        <!-- Columna Izquierda: Hero -->
+        <div class="space-y-5">
+          <span class="badge bg-indigo-50 text-indigo-700 border border-indigo-200 font-semibold">
+            Cobertura inmediata en todo el país
+          </span>
+          <h1 id="titulo-paso-0" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Protegé lo que más usás en menos de <span class="text-indigo-600">2 minutos</span>.
+          </h1>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            Cotizá online, elegí el plan a tu medida y recibí tu póliza digital al instante. Sin trámites presenciales ni letra chica.
+          </p>
+          <ul class="space-y-2.5 text-sm text-slate-600 pt-1">
+            <li class="flex items-center gap-2.5">
+              <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>Atención de siniestros 24/7 desde tu celular</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>Reintegro rápido o reposición de equipo</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>Cancelación sin cargo cuando quieras</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Columna Derecha: Grilla 2x2 de productos -->
+        <div class="grid grid-cols-2 gap-3.5 sm:gap-4">
+          <!-- Producto 1: Celular (Habilitado) -->
+          <article class="card bg-white border-2 border-indigo-600 p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                  </svg>
+                </div>
+                <span class="badge bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-semibold">
+                  Disponible
+                </span>
+              </div>
+              <div>
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Celular</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Contra robo, rotura de pantalla y daño total.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-100">
+              <button type="button" id="btn-iniciar-celular" data-action="iniciar-cotizacion" class="btn w-full text-xs sm:text-sm">
+                Cotizar ahora
+              </button>
+            </div>
+          </article>
+
+          <!-- Producto 2: Hogar (Deshabilitado) -->
+          <article class="card bg-white/70 border border-slate-200 p-4 sm:p-5 flex flex-col justify-between opacity-75">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+                </div>
+                <span class="badge bg-slate-100 text-slate-600 text-[11px]">
+                  Próximamente
+                </span>
+              </div>
+              <div>
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Hogar</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Incendio, robo y electrodomésticos.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-100">
+              <button type="button" class="btn w-full text-xs sm:text-sm" data-variant="outline" disabled>
+                Próximamente
+              </button>
+            </div>
+          </article>
+
+          <!-- Producto 3: Bicicleta (Deshabilitado) -->
+          <article class="card bg-white/70 border border-slate-200 p-4 sm:p-5 flex flex-col justify-between opacity-75">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <circle cx="5.5" cy="17.5" r="3.5" />
+                    <circle cx="18.5" cy="17.5" r="3.5" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3 11.5V14l-3-3 4-3 2 3h2" />
+                  </svg>
+                </div>
+                <span class="badge bg-slate-100 text-slate-600 text-[11px]">
+                  Próximamente
+                </span>
+              </div>
+              <div>
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Bicicleta</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Robo total y responsabilidad civil.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-100">
+              <button type="button" class="btn w-full text-xs sm:text-sm" data-variant="outline" disabled>
+                Próximamente
+              </button>
+            </div>
+          </article>
+
+          <!-- Producto 4: Viaje (Deshabilitado) -->
+          <article class="card bg-white/70 border border-slate-200 p-4 sm:p-5 flex flex-col justify-between opacity-75">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                  </svg>
+                </div>
+                <span class="badge bg-slate-100 text-slate-600 text-[11px]">
+                  Próximamente
+                </span>
+              </div>
+              <div>
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Viaje</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Asistencia médica y pérdida de equipaje.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-100">
+              <button type="button" class="btn w-full text-xs sm:text-sm" data-variant="outline" disabled>
+                Próximamente
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         LAYOUT DE CHECKOUT (PASOS 1 AL 4 + RESUMEN)
+         ========================================== -->
+    <div id="layout-checkout" class="grid gap-8 lg:grid-cols-[1fr_380px] items-start">
+
+      <!-- Columna 1: Secciones de los pasos 1 al 4 -->
+      <div id="columna-pasos" class="min-w-0">
+
+        <!-- ==========================================
+             PASO 1: COTIZAR EQUIPO
+             ========================================== -->
+        <section data-paso="1" aria-labelledby="titulo-paso-1" hidden>
+          <div class="card bg-white border border-slate-200 p-5 sm:p-8 shadow-xs">
+            <div class="mb-6">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-600">Paso 1 de 4</span>
+              <h1 id="titulo-paso-1" class="text-2xl font-extrabold text-slate-900 mt-1">Cotizá tu celular</h1>
+              <p class="text-sm text-slate-500 mt-1">
+                Ingresá los datos de tu equipo para calcular el valor exacto de tu cuota mensual.
+              </p>
+            </div>
+
+            <form id="form-paso-1" class="space-y-5" novalidate>
+              <!-- Marca -->
+              <div role="group" class="field" id="field-marca">
+                <label for="marca" class="font-semibold text-slate-800">Marca del equipo</label>
+                <select id="marca" name="marca" required>
+                  <option value="">Seleccioná una marca</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Apple">Apple</option>
+                  <option value="Motorola">Motorola</option>
+                  <option value="Xiaomi">Xiaomi</option>
+                  <option value="Otra">Otra</option>
+                </select>
+                <p id="error-marca" class="text-xs text-slate-500">Elegí el fabricante de tu celular.</p>
+              </div>
+
+              <!-- Modelo -->
+              <div role="group" class="field" id="field-modelo">
+                <label for="modelo" class="font-semibold text-slate-800">Modelo</label>
+                <input
+                  type="text"
+                  id="modelo"
+                  name="modelo"
+                  placeholder="Ej: Galaxy S24, iPhone 15, Moto G84"
+                  autocomplete="off"
+                  required
+                >
+                <p id="error-modelo" class="text-xs text-slate-500">Mínimo 2 caracteres.</p>
+              </div>
+
+              <!-- Valor del equipo -->
+              <div role="group" class="field" id="field-valorEquipo">
+                <label for="valorEquipo" class="font-semibold text-slate-800">Valor estimado del equipo (ARS)</label>
+                <input
+                  type="text"
+                  inputmode="numeric"
+                  id="valorEquipo"
+                  name="valorEquipo"
+                  placeholder="Ej: 850000"
+                  autocomplete="off"
+                  required
+                >
+                <p id="error-valorEquipo" class="text-xs text-slate-500">El valor debe estar entre $100.000 y $2.500.000.</p>
+              </div>
+
+              <!-- Antigüedad (Chips Radio) -->
+              <div role="group" class="field" id="field-antiguedad">
+                <label class="font-semibold text-slate-800">Antigüedad del equipo</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1" role="radiogroup" aria-label="Antigüedad del equipo">
+                  <div>
+                    <input type="radio" id="antiguedad-menos-1" name="antiguedad" value="menos_1" class="peer sr-only">
+                    <label
+                      for="antiguedad-menos-1"
+                      class="flex flex-col items-center justify-center text-center px-3 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer transition-all hover:border-indigo-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 peer-checked:text-indigo-700 peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-600"
+                    >
+                      <span>Menos de 1 año</span>
+                      <span class="text-[11px] font-normal text-slate-500 mt-0.5">Sin recargo</span>
+                    </label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="antiguedad-1-a-2" name="antiguedad" value="1_a_2" class="peer sr-only">
+                    <label
+                      for="antiguedad-1-a-2"
+                      class="flex flex-col items-center justify-center text-center px-3 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer transition-all hover:border-indigo-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 peer-checked:text-indigo-700 peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-600"
+                    >
+                      <span>1 a 2 años</span>
+                      <span class="text-[11px] font-normal text-slate-500 mt-0.5">+10% en la cuota</span>
+                    </label>
+                  </div>
+
+                  <div>
+                    <input type="radio" id="antiguedad-mas-2" name="antiguedad" value="mas_2" class="peer sr-only">
+                    <label
+                      for="antiguedad-mas-2"
+                      class="flex flex-col items-center justify-center text-center px-3 py-3 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer transition-all hover:border-indigo-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 peer-checked:text-indigo-700 peer-focus-visible:ring-2 peer-focus-visible:ring-indigo-600"
+                    >
+                      <span>Más de 2 años</span>
+                      <span class="text-[11px] font-normal text-slate-500 mt-0.5">+25% en la cuota</span>
+                    </label>
+                  </div>
+                </div>
+                <p id="error-antiguedad" class="text-xs text-slate-500">Seleccioná cuánto tiempo de uso tiene el celular.</p>
+              </div>
+
+              <!-- Acciones Paso 1 -->
+              <div class="flex items-center justify-between gap-3 pt-4 border-t border-slate-200">
+                <button type="button" id="btn-volver-1" data-action="volver" class="btn" data-variant="outline">
+                  Volver
+                </button>
+                <button type="submit" id="btn-continuar-1" class="btn" disabled>
+                  Ver planes
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             PASO 2: ELEGIR PLAN
+             ========================================== -->
+        <section data-paso="2" aria-labelledby="titulo-paso-2" hidden>
+          <div class="card bg-white border border-slate-200 p-5 sm:p-8 shadow-xs">
+            <div class="mb-6">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-600">Paso 2 de 4</span>
+              <h1 id="titulo-paso-2" class="text-2xl font-extrabold text-slate-900 mt-1">Elegí tu plan de cobertura</h1>
+              <p class="text-sm text-slate-500 mt-1">
+                Compará las opciones disponibles para tu equipo. Podés cambiar de plan antes de pagar.
+              </p>
+            </div>
+
+            <form id="form-paso-2" class="space-y-6" novalidate>
+              <!-- Contenedor de las 3 cards de planes (apiladas en mobile, 3 en fila en desktop) -->
+              <div id="contenedor-planes" class="grid grid-cols-1 lg:grid-cols-3 gap-4" role="radiogroup" aria-label="Planes disponibles">
+                <!-- Plan Básico -->
+                <label for="plan-basico" class="cursor-pointer block">
+                  <input type="radio" id="plan-basico" name="plan" value="basico" class="peer sr-only">
+                  <div class="card h-full p-5 border-2 border-slate-200 bg-white rounded-xl flex flex-col justify-between transition-all hover:border-indigo-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50/40">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-2">
+                        <h2 class="text-lg font-extrabold text-slate-900">Básico</h2>
+                      </div>
+                      <p class="text-2xl font-extrabold text-slate-900">$— <span class="text-xs font-normal text-slate-500">/mes</span></p>
+                      <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                        <li class="flex items-center gap-2">
+                          <span class="text-emerald-600 font-bold">✓</span> Robo con violencia
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Plan Plus (Recomendado) -->
+                <label for="plan-plus" class="cursor-pointer block">
+                  <input type="radio" id="plan-plus" name="plan" value="plus" class="peer sr-only" checked>
+                  <div class="card h-full p-5 border-2 border-indigo-600 bg-indigo-50/40 rounded-xl flex flex-col justify-between transition-all hover:border-indigo-400 peer-checked:border-indigo-600 peer-checked:bg-indigo-50/40">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-2">
+                        <h2 class="text-lg font-extrabold text-slate-900">Plus</h2>
+                        <span class="badge bg-indigo-600 text-white text-[11px]">Recomendado</span>
+                      </div>
+                      <p class="text-2xl font-extrabold text-slate-900">$— <span class="text-xs font-normal text-slate-500">/mes</span></p>
+                      <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                        <li class="flex items-center gap-2">
+                          <span class="text-emerald-600 font-bold">✓</span> Robo con violencia
+                        </li>
+                        <li class="flex items-center gap-2">
+                          <span class="text-emerald-600 font-bold">✓</span> Rotura de pantalla
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Plan Premium -->
+                <label for="plan-premium" class="cursor-pointer block">
+                  <input type="radio" id="plan-premium" name="plan" value="premium" class="peer sr-only">
+                  <div class="card h-full p-5 border-2 border-slate-200 bg-white rounded-xl flex flex-col justify-between transition-all hover:border-indigo-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50/40">
+                    <div>
+                      <div class="flex items-center justify-between gap-2 mb-2">
+                        <h2 class="text-lg font-extrabold text-slate-900">Premium</h2>
+                      </div>
+                      <p class="text-2xl font-extrabold text-slate-900">$— <span class="text-xs font-normal text-slate-500">/mes</span></p>
+                      <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                        <li class="flex items-center gap-2">
+                          <span class="text-emerald-600 font-bold">✓</span> Robo con violencia
+                        </li>
+                        <li class="flex items-center gap-2">
+                          <span class="text-emerald-600 font-bold">✓</span> Rotura total
+                        </li>
+                        <li class="flex items-center gap-2">
+                          <span class="text-emerald-600 font-bold">✓</span> Hurto / pérdida
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Acciones Paso 2 -->
+              <div class="flex items-center justify-between gap-3 pt-4 border-t border-slate-200">
+                <button type="button" id="btn-volver-2" data-action="volver" class="btn" data-variant="outline">
+                  Volver
+                </button>
+                <button type="submit" id="btn-continuar-2" class="btn">
+                  Continuar
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             PASO 3: DATOS PERSONALES
+             ========================================== -->
+        <section data-paso="3" aria-labelledby="titulo-paso-3" hidden>
+          <div class="card bg-white border border-slate-200 p-5 sm:p-8 shadow-xs">
+            <div class="mb-6">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-600">Paso 3 de 4</span>
+              <h1 id="titulo-paso-3" class="text-2xl font-extrabold text-slate-900 mt-1">Datos del titular</h1>
+              <p class="text-sm text-slate-500 mt-1">
+                Estos datos figurarán en tu póliza digital y se usarán para enviarte el certificado de cobertura.
+              </p>
+            </div>
+
+            <form id="form-paso-3" class="space-y-5" novalidate>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
+                <!-- Nombre -->
+                <div role="group" class="field" id="field-nombre">
+                  <label for="nombre" class="font-semibold text-slate-800">Nombre</label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Ej: Valentina"
+                    autocomplete="given-name"
+                    required
+                  >
+                  <p id="error-nombre" class="text-xs text-slate-500">Tal como figura en tu DNI.</p>
+                </div>
+
+                <!-- Apellido -->
+                <div role="group" class="field" id="field-apellido">
+                  <label for="apellido" class="font-semibold text-slate-800">Apellido</label>
+                  <input
+                    type="text"
+                    id="apellido"
+                    name="apellido"
+                    placeholder="Ej: Gómez"
+                    autocomplete="family-name"
+                    required
+                  >
+                  <p id="error-apellido" class="text-xs text-slate-500">Tal como figura en tu DNI.</p>
+                </div>
+
+                <!-- DNI -->
+                <div role="group" class="field" id="field-dni">
+                  <label for="dni" class="font-semibold text-slate-800">DNI</label>
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    id="dni"
+                    name="dni"
+                    placeholder="Ej: 40123456"
+                    maxlength="8"
+                    autocomplete="off"
+                    required
+                  >
+                  <p id="error-dni" class="text-xs text-slate-500">7 u 8 dígitos sin puntos.</p>
+                </div>
+
+                <!-- Fecha de nacimiento -->
+                <div role="group" class="field" id="field-fechaNacimiento">
+                  <label for="fechaNacimiento" class="font-semibold text-slate-800">Fecha de nacimiento</label>
+                  <input
+                    type="date"
+                    id="fechaNacimiento"
+                    name="fechaNacimiento"
+                    autocomplete="bday"
+                    required
+                  >
+                  <p id="error-fechaNacimiento" class="text-xs text-slate-500">Debés ser mayor de 18 años.</p>
+                </div>
+
+                <!-- Email -->
+                <div role="group" class="field" id="field-email">
+                  <label for="email" class="font-semibold text-slate-800">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="nombre@correo.com"
+                    autocomplete="email"
+                    required
+                  >
+                  <p id="error-email" class="text-xs text-slate-500">Aquí enviaremos tu póliza digital.</p>
+                </div>
+
+                <!-- Celular -->
+                <div role="group" class="field" id="field-celular">
+                  <label for="celular" class="font-semibold text-slate-800">Celular de contacto</label>
+                  <input
+                    type="tel"
+                    inputmode="numeric"
+                    id="celular"
+                    name="celular"
+                    placeholder="Ej: 1123456789"
+                    autocomplete="tel"
+                    required
+                  >
+                  <p id="error-celular" class="text-xs text-slate-500">Código de área + número (10 dígitos, sin 0 ni 15).</p>
+                </div>
+              </div>
+
+              <!-- Checkbox Términos y Condiciones -->
+              <div role="group" class="field pt-2" id="field-aceptaTerminos">
+                <label for="aceptaTerminos" class="flex items-start gap-3 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    id="aceptaTerminos"
+                    name="aceptaTerminos"
+                    class="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-600"
+                    required
+                  >
+                  <span class="text-sm text-slate-700">
+                    Acepto los términos y condiciones de contratación, la póliza digital y declaro que el equipo funciona correctamente al momento del alta.
+                  </span>
+                </label>
+                <p id="error-aceptaTerminos" class="text-xs text-slate-500"></p>
+              </div>
+
+              <!-- Explicación de qué falta cuando el botón está deshabilitado -->
+              <p id="ayuda-boton-paso-3" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5">
+                Para continuar al pago, completá todos tus datos personales y aceptá los términos y condiciones.
+              </p>
+
+              <!-- Acciones Paso 3 -->
+              <div class="flex items-center justify-between gap-3 pt-4 border-t border-slate-200">
+                <button type="button" id="btn-volver-3" data-action="volver" class="btn" data-variant="outline">
+                  Volver
+                </button>
+                <button type="submit" id="btn-continuar-3" class="btn" disabled>
+                  Continuar al pago
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             PASO 4: PAGO
+             ========================================== -->
+        <section data-paso="4" aria-labelledby="titulo-paso-4" hidden>
+          <div class="card bg-white border border-slate-200 p-5 sm:p-8 shadow-xs space-y-6">
+            <div>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-600">Paso 4 de 4</span>
+              <h1 id="titulo-paso-4" class="text-2xl font-extrabold text-slate-900 mt-1">Revisá y pagá tu seguro</h1>
+              <p class="text-sm text-slate-500 mt-1">
+                Verificá los datos de tu cobertura e ingresá tu tarjeta para adherir al débito mensual.
+              </p>
+            </div>
+
+            <!-- Resumen detallado generado desde el estado -->
+            <div id="resumen-detallado-paso-4" class="bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-5 space-y-3">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-2.5">
+                <h2 class="text-sm font-extrabold text-slate-900">Resumen de contratación</h2>
+                <div class="flex items-center gap-2.5">
+                  <span id="pago-resumen-plan" class="badge bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-semibold">
+                    Plan —
+                  </span>
+                  <button type="button" data-editar-paso="2" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline cursor-pointer">
+                    Editar plan
+                  </button>
+                </div>
+              </div>
+              <dl class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                <div>
+                  <div class="flex items-center justify-between sm:justify-start sm:gap-2">
+                    <dt class="text-slate-500">Equipo asegurado</dt>
+                    <button type="button" data-editar-paso="1" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline cursor-pointer">
+                      Editar
+                    </button>
+                  </div>
+                  <dd id="pago-resumen-equipo" class="font-semibold text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-500">Suma asegurada</dt>
+                  <dd id="pago-resumen-valor" class="font-semibold text-slate-900">—</dd>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between sm:justify-start sm:gap-2">
+                    <dt class="text-slate-500">Titular</dt>
+                    <button type="button" data-editar-paso="3" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline cursor-pointer">
+                      Editar
+                    </button>
+                  </div>
+                  <dd id="pago-resumen-titular" class="font-semibold text-slate-900">—</dd>
+                </div>
+                <div>
+                  <dt class="text-slate-500">Cuota mensual final</dt>
+                  <dd id="pago-resumen-cuota" class="font-extrabold text-indigo-600">—</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Aviso de simulación con .alert -->
+            <div class="alert bg-indigo-50/70 border border-indigo-200 text-slate-800 rounded-xl p-4 text-xs sm:text-sm">
+              <p class="font-semibold text-indigo-950">Entorno de simulación académica</p>
+              <p class="text-slate-600 mt-0.5">
+                No ingreses datos reales. Usá <strong>4111 1111 1111 1111</strong> para simular pago aprobado o <strong>4000 0000 0000 0002</strong> para simular rechazo.
+              </p>
+            </div>
+
+            <form id="form-paso-4" class="space-y-5" novalidate>
+              <!-- Medio de pago (Radios Crédito / Débito) -->
+              <div role="group" class="field" id="field-medioPago">
+                <label class="font-semibold text-slate-800">Medio de pago</label>
+                <div class="grid grid-cols-2 gap-3 pt-1" role="radiogroup" aria-label="Medio de pago">
+                  <div>
+                    <input type="radio" id="medio-credito" name="medioPago" value="credito" class="peer sr-only" checked>
+                    <label
+                      for="medio-credito"
+                      class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer transition-all hover:border-indigo-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 peer-checked:text-indigo-700"
+                    >
+                      <span>Tarjeta de Crédito</span>
+                    </label>
+                  </div>
+                  <div>
+                    <input type="radio" id="medio-debito" name="medioPago" value="debito" class="peer sr-only">
+                    <label
+                      for="medio-debito"
+                      class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer transition-all hover:border-indigo-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 peer-checked:text-indigo-700"
+                    >
+                      <span>Tarjeta de Débito</span>
+                    </label>
+                  </div>
+                </div>
+                <p id="error-medioPago" class="text-xs text-slate-500"></p>
+              </div>
+
+              <!-- Número de tarjeta -->
+              <div role="group" class="field" id="field-numeroTarjeta">
+                <label for="numeroTarjeta" class="font-semibold text-slate-800">Número de tarjeta</label>
+                <input
+                  type="text"
+                  inputmode="numeric"
+                  id="numeroTarjeta"
+                  name="numeroTarjeta"
+                  placeholder="4509 1234 5678 9010"
+                  maxlength="19"
+                  autocomplete="cc-number"
+                  required
+                >
+                <p id="error-numeroTarjeta" class="text-xs text-slate-500">Ingresá los 16 dígitos del frente de tu tarjeta.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Vencimiento (MM/AA) -->
+                <div role="group" class="field" id="field-vencimiento">
+                  <label for="vencimiento" class="font-semibold text-slate-800">Vencimiento (MM/AA)</label>
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    id="vencimiento"
+                    name="vencimiento"
+                    placeholder="MM/AA"
+                    maxlength="5"
+                    autocomplete="cc-exp"
+                    required
+                  >
+                  <p id="error-vencimiento" class="text-xs text-slate-500">Mes y año de expiración (ej: 08/28).</p>
+                </div>
+
+                <!-- CVV -->
+                <div role="group" class="field" id="field-cvv">
+                  <label for="cvv" class="font-semibold text-slate-800">Código de seguridad (CVV)</label>
+                  <input
+                    type="password"
+                    inputmode="numeric"
+                    id="cvv"
+                    name="cvv"
+                    placeholder="123"
+                    maxlength="3"
+                    autocomplete="cc-csc"
+                    required
+                  >
+                  <p id="error-cvv" class="text-xs text-slate-500">3 dígitos al dorso de la tarjeta.</p>
+                </div>
+              </div>
+
+              <!-- Titular de la tarjeta -->
+              <div role="group" class="field" id="field-titularTarjeta">
+                <label for="titularTarjeta" class="font-semibold text-slate-800">Nombre del titular en la tarjeta</label>
+                <input
+                  type="text"
+                  id="titularTarjeta"
+                  name="titularTarjeta"
+                  placeholder="COMO FIGURA EN LA TARJETA"
+                  autocomplete="cc-name"
+                  required
+                >
+                <p id="error-titularTarjeta" class="text-xs text-slate-500">Exactamente como está impreso en el plástico.</p>
+              </div>
+
+              <!-- Acciones Paso 4 -->
+              <div class="flex items-center justify-between gap-3 pt-4 border-t border-slate-200">
+                <button type="button" id="btn-volver-4" data-action="volver" class="btn" data-variant="outline">
+                  Volver
+                </button>
+                <button type="submit" id="btn-pagar" class="btn">
+                  Pagar y contratar
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Columna 2 (Desktop) / Barra Fija Inferior (Mobile): ÚNICO Resumen de Compra -->
+      <aside
+        id="resumen-compra"
+        aria-label="Resumen de tu cotización"
+        class="card fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-slate-200 p-4 shadow-[0_-4px_20px_rgba(15,23,42,0.08)] lg:static lg:z-auto lg:bg-white lg:border lg:rounded-xl lg:p-6 lg:shadow-xs lg:sticky lg:top-24"
+        hidden
+      >
+        <!-- Vista compacta en Mobile + Encabezado en Desktop -->
+        <div class="flex items-center justify-between gap-4 lg:block">
+          <div>
+            <p class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600">Tu resumen</p>
+            <h2 id="resumen-equipo-titulo" class="text-sm lg:text-base font-extrabold text-slate-900 truncate">
+              Completá los datos del equipo
+            </h2>
+          </div>
+          <div class="text-right lg:text-left lg:mt-4 lg:pt-4 lg:border-t lg:border-slate-200">
+            <p class="text-[11px] text-slate-500">Cuota mensual estimada</p>
+            <p id="resumen-cuota-valor" class="text-xl lg:text-3xl font-extrabold text-indigo-600">
+              $—<span class="text-xs font-normal text-slate-500">/mes</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Detalle adicional visible en Desktop (y expandible/estructurado desde el mismo nodo) -->
+        <dl class="hidden lg:block mt-5 pt-4 border-t border-slate-200 space-y-2.5 text-sm">
+          <div class="flex items-center justify-between gap-2">
+            <dt class="text-slate-500">Suma asegurada</dt>
+            <dd id="resumen-suma-asegurada" class="font-semibold text-slate-900">—</dd>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <dt class="text-slate-500">Antigüedad</dt>
+            <dd id="resumen-antiguedad" class="font-semibold text-slate-900">—</dd>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <dt class="text-slate-500">Plan seleccionado</dt>
+            <dd id="resumen-plan-nombre" class="font-semibold text-indigo-600">Plus</dd>
+          </div>
+          <div class="pt-2 border-t border-slate-100">
+            <dt class="text-xs font-semibold text-slate-500 mb-1.5">Coberturas incluidas</dt>
+            <dd id="resumen-coberturas-lista" class="text-xs text-slate-600 space-y-1">
+              <p>• Robo con violencia</p>
+              <p>• Rotura de pantalla</p>
+            </dd>
+          </div>
+        </dl>
+      </aside>
+
+    </div>
+
+    <!-- ==========================================
+         PASO 5: ÉXITO (PÓLIZA EMITIDA)
+         ========================================== -->
+    <section data-paso="5" aria-labelledby="titulo-paso-5" class="max-w-2xl mx-auto" hidden>
+      <div class="card bg-white border border-slate-200 p-6 sm:p-10 text-center shadow-xs space-y-6">
+        <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
+          <svg class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </div>
+
+        <div class="space-y-2">
+          <span class="badge bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
+            Cobertura activa
+          </span>
+          <h1 id="titulo-paso-5" class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            ¡Felicitaciones, <span id="exito-nombre-titular">Titular</span>!
+          </h1>
+          <p class="text-sm sm:text-base text-slate-600">
+            Tu celular ya está protegido. Enviamos la póliza digital a <strong id="exito-email-titular" class="text-slate-900">correo@ejemplo.com</strong>.
+          </p>
+        </div>
+
+        <!-- Número de Póliza y Resumen -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 text-left space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Número de póliza</span>
+            <span id="exito-numero-poliza" class="font-mono text-base sm:text-lg font-extrabold text-indigo-600">
+              POL-2026-000000
+            </span>
+          </div>
+
+          <dl id="exito-resumen-seguro" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            <div>
+              <dt class="text-xs text-slate-500">Equipo asegurado</dt>
+              <dd id="exito-equipo" class="font-semibold text-slate-900">—</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-slate-500">Plan contratado</dt>
+              <dd id="exito-plan" class="font-semibold text-slate-900">—</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-slate-500">Suma asegurada</dt>
+              <dd id="exito-suma" class="font-semibold text-slate-900">—</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-slate-500">Cuota mensual</dt>
+              <dd id="exito-cuota" class="font-extrabold text-emerald-600">—</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="pt-2">
+          <button type="button" id="btn-volver-inicio" data-action="reiniciar" class="btn" data-variant="ghost">
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PASO 6: ERROR DE PAGO
+         ========================================== -->
+    <section data-paso="6" aria-labelledby="titulo-paso-6" class="max-w-xl mx-auto" hidden>
+      <div class="card bg-white border border-slate-200 p-6 sm:p-8 shadow-xs space-y-6">
+        <div class="space-y-2">
+          <span class="badge bg-red-50 text-red-700 border border-red-200 font-semibold">
+            Operación rechazada
+          </span>
+          <h1 id="titulo-paso-6" class="text-2xl font-extrabold text-slate-900">
+            No pudimos procesar tu pago
+          </h1>
+          <p class="text-sm text-slate-600">
+            Tu solicitud y los datos de tu celular siguen guardados para que no tengas que cargarlos de nuevo.
+          </p>
+        </div>
+
+        <!-- Alerta destructiva -->
+        <div class="alert" data-variant="destructive" role="alert">
+          <div class="space-y-1">
+            <p class="font-extrabold">La entidad emisora rechazó la transacción</p>
+            <p id="error-pago-mensaje" class="text-sm">
+              La tarjeta terminada en 0000 no cuenta con autorización para adherir al débito automático. Verificá los datos ingresados o probá con otra tarjeta.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-2 border-t border-slate-200">
+          <button type="button" id="btn-cambiar-medio" data-action="cambiar-medio-pago" class="btn" data-variant="outline">
+            Cambiar medio de pago
+          </button>
+          <button type="button" id="btn-reintentar-pago" data-action="reintentar-pago" class="btn">
+            Reintentar pago
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

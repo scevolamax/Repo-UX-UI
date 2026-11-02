@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  /* Basecoat UI variables */
+  --primary: #4F46E5;
+  --primary-foreground: #FFFFFF;
+  --radius: 0.75rem;
+
+  /* Design tokens */
+  --primary-700: #3730A3;
+  --primary-50: #EEF2FF;
+  --success: #059669;
+  --error: #DC2626;
+  --text: #0F172A;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --bg: #F5F7FB;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
