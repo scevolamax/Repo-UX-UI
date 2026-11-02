@@ -49,9 +49,8 @@ export function cargarEstadoPersistido() {
     const datos = JSON.parse(guardado);
     if (!datos || typeof datos !== 'object') return;
 
-    if (typeof datos.paso === 'number' && datos.paso >= 0 && datos.paso <= 6) {
-      solicitud.paso = datos.paso === 5 ? 0 : datos.paso;
-    }
+    // Siempre iniciar en la pantalla de selección de seguro (Paso 0) al abrir el sitio
+    solicitud.paso = 0;
     if (datos.equipo && typeof datos.equipo === 'object') {
       solicitud.equipo = {
         marca: String(datos.equipo.marca ?? ''),
